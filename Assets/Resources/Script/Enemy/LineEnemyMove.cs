@@ -28,7 +28,7 @@ public class LineEnemyMove : AbstractEnemyMove {
         pos += direction * speed * Time.deltaTime;
         if (mode == MoveMode.DOWN) {
             float temp = pos.y;
-            pos.y = Mathf.Clamp(pos.y, downGoal, Settings.HEIGHT);
+            pos.y = Mathf.Clamp(pos.y, downGoal, Settings.UP_LIMIT);
             if (temp != pos.y)
                 mode = nextMode;
         }
