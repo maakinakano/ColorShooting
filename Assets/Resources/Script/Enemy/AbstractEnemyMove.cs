@@ -6,11 +6,6 @@ public abstract class AbstractEnemyMove : MonoBehaviour {
     public float speed;
     public MoveMode mode;
 
-    // Use this for initialization
-    void Start() {
-    }
-
-    // Update is called once per frame
     void Update() {
         Move();
         Vector2 pos = transform.position;

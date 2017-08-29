@@ -6,8 +6,10 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour {
 
     public float speed;
+    public float damage;
 
     void Start() {
+        GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0.8f);
         GetComponent<Rigidbody2D>().velocity = speed * Vector2.up;
     }
 
@@ -17,11 +19,12 @@ public class BulletMove : MonoBehaviour {
             transform.position.x < -Settings.WIDTH - 50)
             GameObject.Destroy(gameObject);
     }
-    private void OnCollisionEnter2D(Collision2D other) {
-        GameObject.Destroy(gameObject);
+
+    private void OnTriggerEnter2D(Collider2D other) {
         EnemyLife life = other.gameObject.GetComponent<EnemyLife>();
         if (life != null) {
-            life.Damage(EnemyLife.RED, 10F);
+            GameObject.Destroy(gameObject);
+            life.Damage(EnemyLife.RED, damage);
         }
     }
 }
